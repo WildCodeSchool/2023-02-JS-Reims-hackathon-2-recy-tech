@@ -8,7 +8,7 @@ function Footer() {
         <div className="row">
           <div className="footer-col">
             <h4>RecyTech</h4>
-            <ul>
+            <ul className="footerList">
               <li>
                 <a href="/about">A propos</a>
               </li>
@@ -22,7 +22,7 @@ function Footer() {
           </div>
           <div className="footer-col">
             <h4>Aide</h4>
-            <ul>
+            <ul className="footerList">
               <li>
                 <a href="/faq">FAQ</a>
               </li>
