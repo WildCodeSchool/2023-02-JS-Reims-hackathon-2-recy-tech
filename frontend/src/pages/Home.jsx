@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -13,6 +14,14 @@ function Home() {
         src="https://www.pourquoidocteur.fr/media/article/COPY_istock-1310872540-1668442314.jpg"
         alt="Homme utilisant son téléphone"
       />
+      <a
+        href="https://emmaiusconnect.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <br />
+        <button>Accéder au site</button>
+      </a>
     </div>
   );
 }
