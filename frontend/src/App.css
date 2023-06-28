@@ -78,6 +78,9 @@ ul {
 /* HOME (Page D'accueil ) */
 
 .button-home {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20px;
   position: relative;
   background-color: #4c9baf;
   border: none;
@@ -112,4 +115,15 @@ ul {
   opacity: 1;
   transition: 0s;
 }
+.img-home {
+  margin: 0 auto;
+  display: block;
+}
 
+.title-home {
+  text-align: center;
+}
+.text-home {
+  text-align: center;
+  margin-bottom: 20px;
+}
