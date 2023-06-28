@@ -1,49 +1,27 @@
-body {
+
+* {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-family: "Ubuntu", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body {
+  line-height: 1.5;
+  font-family: "Poppins", sans-serif;
+}
 
-.Navbar {
-  width: 100%;
-  height: 5em;
-  background-color: #00acb0;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-.logo {
-  height: 5em;
-  top: 0;
-  z-index: 10;
-  padding: 1em;
-  cursor: pointer;
+
+button {
+  font-size: calc(10px + 2vmin);
 }
-.NavList {
-  display: flex;
-  list-style: none;
-  justify-content: flex-end;
-}
-.listNavbar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
-  gap: 0.5rem;
-}
-.listNavbar img {
-  height: 2rem;
-  width: 2rem;
-}
-.listNavbar:hover {
-  background-color: #002743;
-  border: 2px solid;
-}
+
