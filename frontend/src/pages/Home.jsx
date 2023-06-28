@@ -19,7 +19,9 @@ function Home() {
         rel="noopener noreferrer"
       >
         <br />
-        <button className="button-home">Accéder au site</button>
+        <button type="button" className="button-home">
+          Accéder au site
+        </button>
       </a>
     </div>
   );
