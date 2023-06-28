@@ -1,36 +1,20 @@
-import Counter from "../components/Counter";
-import logo from "../assets/logo.svg";
+import React from "react";
 
-export default function Home() {
+function Home() {
   return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>Hello Vite + React !</p>
-
-      <Counter />
-
+    <div>
+      <h1>Bienvenue sur RecyTech</h1>
       <p>
-        Edit <code>App.jsx</code> and save to test HMR updates.
+        Créer un outil qui permet de classifier les téléphones et générer
+        automatiquement les résultats en fonction de ces classifications.
+        imprimer une étiquette en code QR (fiche de vente)
       </p>
-      <p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {" | "}
-        <a
-          className="App-link"
-          href="https://vitejs.dev/guide/features.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vite Docs
-        </a>
-      </p>
-    </header>
+      <img
+        src="https://www.pourquoidocteur.fr/media/article/COPY_istock-1310872540-1668442314.jpg"
+        alt="Homme utilisant son téléphone"
+      />
+    </div>
   );
 }
+
+export default Home;
