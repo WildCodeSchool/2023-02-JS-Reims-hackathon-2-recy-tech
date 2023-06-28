@@ -1,3 +1,4 @@
+import "../App.css";
 import React from "react";
 
 function Home() {
@@ -10,6 +11,7 @@ function Home() {
         imprimer une étiquette en code QR (fiche de vente)
       </p>
       <img
+        className="img-home"
         src="https://www.pourquoidocteur.fr/media/article/COPY_istock-1310872540-1668442314.jpg"
         alt="Homme utilisant son téléphone"
       />
