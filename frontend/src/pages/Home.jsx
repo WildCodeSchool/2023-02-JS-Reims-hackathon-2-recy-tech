@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div>
-      <h1>Bienvenue sur RecyTech</h1>
-      <p>
+      <h1 className="title-home">Bienvenue sur RecyTech</h1>
+      <p className="text-home">
         Créer un outil qui permet de classifier les téléphones et générer
         automatiquement les résultats en fonction de ces classifications.
         imprimer une étiquette en code QR (fiche de vente)
@@ -15,12 +15,12 @@ function Home() {
         alt="Homme utilisant son téléphone"
       />
       <a
-        href="https://emmaiusconnect.com"
+        href="https://emmaus-connect.org/"
         target="_blank"
         rel="noopener noreferrer"
       >
         <br />
-        <button>Accéder au site</button>
+        <button className="button-home">Accéder au site</button>
       </a>
     </div>
   );
