@@ -12,6 +12,7 @@ function Addphone() {
   const [hasCharger, setHasCharger] = useState(false);
   const [comment, setComment] = useState("");
   const [antutuScore, setSelectedAntutuScore] = useState("");
+
   useEffect(() => {
     fetch(
       `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"}/models`

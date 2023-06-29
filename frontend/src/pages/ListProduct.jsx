@@ -6,7 +6,7 @@ function ListProduct() {
 
   useEffect(() => {
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"}/products`
+      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5001"}/products`
     )
       .then((response) => response.json())
       .then((data) => setProducts(data));
