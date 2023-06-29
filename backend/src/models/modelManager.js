@@ -14,8 +14,8 @@ class ModelManager extends AbstractManager {
 
   update(model) {
     return this.database.query(
-      `update ${this.table} set title = ? where id = ?`,
-      [model.title, model.id]
+      `update ${this.table} set name = ? where id = ?`,
+      [model.name, model.id]
     );
   }
 }
