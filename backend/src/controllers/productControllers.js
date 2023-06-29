@@ -82,10 +82,25 @@ const destroy = (req, res) => {
     });
 };
 
+const addProductAndModel = (req, res) => {
+  // vérifier si le model exist
+  models.model.findByName(req.body.model_name).then(([rows]) => {
+    if (rows[0] == null) {
+      res.sendStatus(404);
+    } else {
+      req.body.id_model = rows[0].id;
+      models.product.insert(req.body).then(([result]) => {
+        res.location(`/models/${result.insertId}`).sendStatus(201);
+      });
+    }
+  });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  addProductAndModel,
 };

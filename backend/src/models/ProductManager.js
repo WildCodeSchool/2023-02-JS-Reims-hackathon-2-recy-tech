@@ -1,5 +1,5 @@
 const AbstractManager = require("./AbstractManager");
-const ModelManager = require("./modelManager");
+const ModelManager = require("./ModelManager");
 
 class ProductManager extends AbstractManager {
   constructor() {
@@ -9,11 +9,12 @@ class ProductManager extends AbstractManager {
 
   insert(product) {
     return this.database.query(
-      `insert into ${this.table} (state,antutu_value,has_accessories,id_model) values (?,?,?,?)`,
+      `insert into ${this.table} (state,antutu_value,has_accessories,price,id_model) values (?,?,?,?,?)`,
       [
         product.state,
         product.antutu_value,
         product.has_accessories,
+        product.price,
         product.id_model,
       ]
     );
@@ -35,6 +36,13 @@ class ProductManager extends AbstractManager {
   findAll() {
     return this.database.query(
       `select * from ${this.table} JOIN ${this.model.table} ON ${this.table}.id_model = ${this.model.table}.id`
+    );
+  }
+
+  find(id) {
+    return this.database.query(
+      `select * from  ${this.table} JOIN ${this.model.table} ON ${this.table}.id_model = ${this.model.table}.id where ${this.table}.id = ?`,
+      [id]
     );
   }
 }
