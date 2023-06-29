@@ -1,13 +1,19 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import "../App.css";
 
 function Addphone() {
+  const [selectedMarque, setSelectedMarque] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedRAM, setSelectedRAM] = useState("");
   const [selectedStorage, setSelectedStorage] = useState("");
   const [selectedNetwork, setSelectedNetwork] = useState("");
   const [hasCharger, setHasCharger] = useState(false);
   const [comment, setComment] = useState("");
+
+  const handleMarqueChange = (event) => {
+    setSelectedMarque(event.target.value);
+  };
 
   const handleModelChange = (event) => {
     setSelectedModel(event.target.value);
@@ -52,7 +58,7 @@ function Addphone() {
       <form onSubmit={handleSubmit} className="form-list">
         <div className="form-row">
           <p>Marque : </p>
-          <select value={selectedModel} onChange={handleModelChange}>
+          <select value={selectedMarque} onChange={handleMarqueChange}>
             <option value="">-- Sélectionnez : --</option>
             <option value="Modèle 1">Iphone</option>
             <option value="Modèle 2">Samsung</option>
@@ -118,9 +124,9 @@ function Addphone() {
           <textarea value={comment} onChange={handleCommentChange} />
         </div>
         <div className="btn-form">
-          <button type="submit" className="btn1">
-            Suivant
-          </button>
+          <Link to="resultat" className="btn1">
+            Validation
+          </Link>
         </div>
       </form>
     </section>

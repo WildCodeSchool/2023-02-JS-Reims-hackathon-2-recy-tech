@@ -55,6 +55,7 @@
 .mobile-menu-icon {
   display: none;
 }
+
 /*NAVBAR RESPONSIVE*/
 @media screen and (max-width: 780px) {
   .Logo {
@@ -287,4 +288,6 @@ input[type="checkbox"] {
   width: 50%;
   background-color: #002743;
   color: white;
+  text-align: center;
+  text-decoration: none;
 }
