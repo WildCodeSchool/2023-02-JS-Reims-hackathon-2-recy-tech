@@ -91,6 +91,7 @@ function Addphone() {
             min="0"
             value={antutuScore}
             onChange={handleAntutuScoreChange}
+            className="antutu"
           />
         </div>
         <div className="form-row">
