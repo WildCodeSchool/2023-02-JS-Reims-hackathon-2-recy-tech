@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../App.css";
 
 function Addphone() {
+  const [selectedMarque, setSelectedMarque] = useState("");
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState("");
-  const [selectedMarque, setSelectedMarque] = useState("");
   const [selectedRAM, setSelectedRAM] = useState("");
   const [selectedStorage, setSelectedStorage] = useState("");
   const [selectedNetwork, setSelectedNetwork] = useState("");
   const [hasCharger, setHasCharger] = useState(false);
   const [comment, setComment] = useState("");
   const [antutuScore, setSelectedAntutuScore] = useState("");
+
   useEffect(() => {
     fetch(
       `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"}/models`
@@ -18,9 +20,11 @@ function Addphone() {
       .then((response) => response.json())
       .then((data) => setModels(data));
   }, []);
+
   const handleMarqueChange = (event) => {
     setSelectedMarque(event.target.value);
   };
+
   const handleModelChange = (event) => {
     setSelectedModel(event.target.value);
   };
@@ -94,6 +98,7 @@ function Addphone() {
             min="0"
             value={antutuScore}
             onChange={handleAntutuScoreChange}
+            className="antutu"
           />
         </div>
         <div className="form-row">
@@ -136,9 +141,9 @@ function Addphone() {
           <textarea value={comment} onChange={handleCommentChange} />
         </div>
         <div className="btn-form">
-          <button type="submit" className="btn1">
-            Suivant
-          </button>
+          <Link to="resultat" className="btn1">
+            Validation
+          </Link>
         </div>
       </form>
     </section>
