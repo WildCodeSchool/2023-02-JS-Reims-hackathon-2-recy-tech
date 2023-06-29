@@ -49,10 +49,10 @@ function Addphone() {
 
   return (
     <div className="form-container">
-      <h2>Formulaire de téléphone</h2>
+      <h2>Ajouter un téléphone</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-row">
-          <p>Modèle :</p>
+          <p>Modèle </p>
           <select value={selectedModel} onChange={handleModelChange}>
             <option value="">-- Sélectionnez --</option>
             <option value="Modèle 1">Modèle 1</option>
@@ -61,7 +61,7 @@ function Addphone() {
           </select>
         </div>
         <div className="form-row">
-          <p>RAM :</p>
+          <p>RAM </p>
           <select value={selectedRAM} onChange={handleRAMChange}>
             <option value="">-- Sélectionnez --</option>
             <option value="2 Go">2 Go</option>
@@ -70,7 +70,7 @@ function Addphone() {
           </select>
         </div>
         <div className="form-row">
-          <p>Stockage :</p>
+          <p>Stockage </p>
           <select value={selectedStorage} onChange={handleStorageChange}>
             <option value="">-- Sélectionnez --</option>
             <option value="64 Go">64 Go</option>
@@ -79,7 +79,7 @@ function Addphone() {
           </select>
         </div>
         <div className="form-row">
-          <p>Réseau :</p>
+          <p>Réseau </p>
           <select value={selectedNetwork} onChange={handleNetworkChange}>
             <option value="">-- Sélectionnez --</option>
             <option value="4G">4G</option>
@@ -87,7 +87,7 @@ function Addphone() {
           </select>
         </div>
         <div className="form-row">
-          <p>Chargeur :</p>
+          <p>Chargeur </p>
           <input
             type="checkbox"
             checked={hasCharger}
@@ -95,7 +95,7 @@ function Addphone() {
           />
         </div>
         <div className="form-row">
-          <p>Commentaire :</p>
+          <p>Commentaire </p>
           <textarea value={comment} onChange={handleCommentChange} />
         </div>
         <button type="submit">Soumettre</button>
