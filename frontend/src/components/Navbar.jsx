@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
-import logoEmmaus from "../assets/emmauslogo.png";
+import recyTech from "../assets/RecyTech_logo.png";
 import home from "../assets/home1.png";
 import add from "../assets/add1.svg";
 import liste from "../assets/liste.svg";
@@ -17,7 +17,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <img src={logoEmmaus} alt="" className="logo" />
+      <img src={recyTech} alt="" className="logo" />
       <ul className={isMobile ? "nav-links-mobile" : "nav-links"}>
         <Link to="/" className="home" onClick={() => setIsMobile(false)}>
           <li className="nav-list">
