@@ -8,6 +8,7 @@ function Addphone() {
   const [selectedNetwork, setSelectedNetwork] = useState("");
   const [hasCharger, setHasCharger] = useState(false);
   const [comment, setComment] = useState("");
+  const [antutuScore, setSelectedAntutuScore] = useState("");
 
   const handleModelChange = (event) => {
     setSelectedModel(event.target.value);
@@ -33,6 +34,10 @@ function Addphone() {
     setComment(event.target.value);
   };
 
+  const handleAntutuScoreChange = (event) => {
+    setSelectedAntutuScore(event.target.value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -56,6 +61,15 @@ function Addphone() {
             <option value="Modèle 2">Modèle 2</option>
             <option value="Modèle 3">Modèle 3</option>
           </select>
+        </div>
+        <div className="form-row">
+          <p>Score Antutu </p>
+          <input
+            type="number"
+            min="0"
+            value={antutuScore}
+            onChange={handleAntutuScoreChange}
+          />
         </div>
         <div className="form-row">
           <p>RAM </p>
