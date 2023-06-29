@@ -13,6 +13,9 @@ CREATE TABLE product (
   state ENUM('DEEE','REPARABLE','BLOQUE','RECONDITIONABLE','RECONDITIONNE'),
 	antutu_value INT(40),
   has_accessories BOOLEAN NOT NULL DEFAULT FALSE,
+  price INT,
+  category ENUM('1-HC','2-C','3-B','4-A','5-Premium'),
+  commentary TEXT,
   id_model int(11) UNSIGNED,
   FOREIGN KEY (id_model) REFERENCES model(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -25,4 +28,5 @@ insert into model (name, marque, ram, storage) values ('Galaxy Note 10', 'Samsun
 insert into model (name, marque, ram, storage) values ('iPhone X', 'Apple', '4GB', '64GB');
 insert into model (name, marque, ram, storage) values ('Galaxy Note 10', 'Samsung', '32GB', '64GB');
 
-insert into product(state,antutu_value, has_accessories,id_model) values('BLOQUE',100000,false,1);
+insert into product(state,antutu_value, has_accessories,category,price, commentary,id_model) 
+values('BLOQUE',100000,false,'1-HC',80,"commentaire test",1);
