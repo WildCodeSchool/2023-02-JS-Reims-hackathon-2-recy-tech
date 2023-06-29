@@ -5,19 +5,21 @@
   font-family: "Montserrat", sans-serif;
   font-family: "Ubuntu", sans-serif;
 }
+.App {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 100vh;
+}
 
 /* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 80px;
   background-color: #00acb0;
   color: white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-}
-.logo {
-  height: 80px;
 }
 .nav-links {
   display: flex;
@@ -111,8 +113,6 @@
   width: 100%;
   gap: 5em;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-  height: 80px;
-  /* position: fixed; */
 }
 .row {
   display: flex;
@@ -167,6 +167,7 @@
 /* HOME (Page D'accueil ) */
 .homeHero {
   display: flex;
+  flex-grow: 1;
 }
 .title-home h1 {
   justify-content: center;
@@ -260,7 +261,7 @@
 }
 .form-row textarea {
   width: 100%;
-  height: 5em;
+  height: 7em;
   border-radius: 10px;
   background-color: #00acb0;
   border: 3px solid white;
