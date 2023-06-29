@@ -6,9 +6,15 @@ class ProductManager extends AbstractManager {
   }
 
   insert(product) {
-    return this.database.query(`insert into ${this.table} (title) values (?)`, [
-      product.title,
-    ]);
+    return this.database.query(
+      `insert into ${this.table} (state,antutu_value,has_accessories,id_model) values (?,?,?,?)`,
+      [
+        product.state,
+        product.antutu_value,
+        product.has_accessories,
+        product.id_model,
+      ]
+    );
   }
 
   update(product) {
