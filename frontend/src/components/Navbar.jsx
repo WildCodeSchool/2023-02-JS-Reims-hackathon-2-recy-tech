@@ -1,45 +1,65 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
+import logoEmmaus from "../assets/emmauslogo.png";
+import home from "../assets/home1.png";
+import add from "../assets/add1.svg";
+import liste from "../assets/liste.svg";
 import "../App.css";
 
 function Navbar() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobile(!isMobile);
+  };
+
   return (
     <nav className="navbar">
-      <h3>Logo</h3>
-      <ul className="nav-links">
-        <Link to="/">
-          <li>Accueil</li>
+      <img src={logoEmmaus} alt="" className="logo" />
+      <ul className={isMobile ? "nav-links-mobile" : "nav-links"}>
+        <Link to="/" className="home" onClick={() => setIsMobile(false)}>
+          <li className="nav-list">
+            <img src={home} alt="" />
+            Accueil
+          </li>
         </Link>
-        <Link to="/">
-          <li>Accueil</li>
+        <Link
+          to="/ajouteproduit"
+          className="add"
+          onClick={() => setIsMobile(false)}
+        >
+          <li className="nav-list">
+            <img src={add} alt="" />
+            Ajouter un télephone
+          </li>
         </Link>
-        <Link to="/">
-          <li>Accueil</li>
+        <Link
+          to="/listeproduit"
+          className="listProduct"
+          onClick={() => setIsMobile(false)}
+        >
+          <li className="nav-list">
+            {" "}
+            <img src={liste} alt="" />
+            Liste des Téléphones
+          </li>
         </Link>
       </ul>
+      <button
+        type="button"
+        className="mobile-menu-icon"
+        onClick={toggleMobileMenu}
+      >
+        {isMobile ? (
+          <AiOutlineClose className="faXmark" />
+        ) : (
+          <FaBars className="FaBars" />
+        )}
+      </button>
     </nav>
   );
 }
-// function Navbar() {
-//   return (
-//     <div className="Navbar">
-//       <img src={logo} alt="logoEmmaus" className="logo" />
-//       <ul className="NavList">
-//         <li className="listNavbar">
-//           <img src={home} alt="accueil" />
-//           Accueil
-//         </li>
-//         <li className="listNavbar">
-//           <img src={add} alt="" />
-//           Ajouter des telephones
-//         </li>
-//         <li className="listNavbar">
-//           <img src={list} alt="" />
-//           Liste des telephones
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// }
 
 export default Navbar;
