@@ -12,6 +12,7 @@ function Addphone() {
   const [hasCharger, setHasCharger] = useState(false);
   const [comment, setComment] = useState("");
   const [antutuScore, setSelectedAntutuScore] = useState("");
+  const [selectedEtat, setSelectedEtat] = useState("");
 
   useEffect(() => {
     fetch(
@@ -52,10 +53,12 @@ function Addphone() {
   const handleAntutuScoreChange = (event) => {
     setSelectedAntutuScore(event.target.value);
   };
+  const handleEtatChange = (event) => {
+    setSelectedEtat(event.target.value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     setSelectedModel("");
     setSelectedRAM("");
     setSelectedStorage("");
@@ -134,6 +137,17 @@ function Addphone() {
             <option value="">-- Sélectionnez --</option>
             <option>Cable+ chargeur</option>
             <option>sans Accesoires</option>
+          </select>
+        </div>
+        <div className="form-row">
+          <p>État</p>
+          <select value={selectedEtat} onChange={handleEtatChange}>
+            <option value="">-- Sélectionnez --</option>
+            <option>DEEE</option>
+            <option>Reparable</option>
+            <option>Bloque</option>
+            <option>Reconditionable</option>
+            <option>Reconditionné</option>
           </select>
         </div>
         <div className="form-row">
