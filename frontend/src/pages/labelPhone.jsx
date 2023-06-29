@@ -1,5 +1,5 @@
 import QrCode from "../components/QrCode";
-import "./app.css";
+import "../App.css";
 
 export default function labelPhone() {
   return (
