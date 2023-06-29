@@ -1,30 +1,31 @@
 import "../App.css";
 import React from "react";
+import mobile from "../assets/mobile.svg";
 
 function Home() {
   return (
-    <div>
-      <h1 className="title-home">Bienvenue sur RecyTech</h1>
-      <p className="text-home">
-        Créer un outil qui permet de classifier les téléphones et générer
-        automatiquement les résultats en fonction de ces classifications.
-        imprimer une étiquette en code QR (fiche de vente)
-      </p>
-      <img
-        className="img-home"
-        src="https://www.pourquoidocteur.fr/media/article/COPY_istock-1310872540-1668442314.jpg"
-        alt="Homme utilisant son téléphone"
-      />
-      <a
-        href="https://emmaus-connect.org/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <br />
-        <button type="button" className="button-home">
-          Accéder au site
-        </button>
-      </a>
+    <div className="homeHero">
+      <div className="hero">
+        <div className="heroText">
+          <h1>Bienvenue sur RecyTech</h1>
+          <p className="text-home">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et fugiat
+            repellendus eveniet tempora aspernatur exercitationem a iste sed
+            quaerat, sequi facilis repudiandae consectetur laboriosam nisi.
+            Neque similique tenetur ipsum optio.
+          </p>
+          <button type="button" className="button-home">
+            Commencer
+          </button>
+        </div>
+        <div className="hero-img">
+          <img
+            className="img-home"
+            src={mobile}
+            alt="Homme utilisant son téléphone"
+          />
+        </div>
+      </div>
     </div>
   );
 }
