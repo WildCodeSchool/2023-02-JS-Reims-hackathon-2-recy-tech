@@ -36,9 +36,6 @@ function Addphone() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Logique pour traiter les données du formulaire (par exemple, les envoyer à un serveur)
-
-    // Réinitialiser les valeurs du formulaire
     setSelectedModel("");
     setSelectedRAM("");
     setSelectedStorage("");
