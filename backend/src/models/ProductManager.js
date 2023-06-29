@@ -1,22 +1,22 @@
 const AbstractManager = require("./AbstractManager");
 
-class ModelManager extends AbstractManager {
+class ProductManager extends AbstractManager {
   constructor() {
-    super({ table: "model" });
+    super({ table: "product" });
   }
 
-  insert(model) {
+  insert(product) {
     return this.database.query(`insert into ${this.table} (title) values (?)`, [
-      model.title,
+      product.title,
     ]);
   }
 
-  update(model) {
+  update(product) {
     return this.database.query(
       `update ${this.table} set title = ? where id = ?`,
-      [model.title, model.id]
+      [product.title, product.id]
     );
   }
 }
 
-module.exports = ModelManager;
+module.exports = ProductManager;
