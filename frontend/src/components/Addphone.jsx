@@ -10,6 +10,7 @@ function Addphone() {
   const [selectedNetwork, setSelectedNetwork] = useState("");
   const [hasCharger, setHasCharger] = useState(false);
   const [comment, setComment] = useState("");
+  const [antutuScore, setSelectedAntutuScore] = useState("");
 
   const handleMarqueChange = (event) => {
     setSelectedMarque(event.target.value);
@@ -37,6 +38,10 @@ function Addphone() {
 
   const handleCommentChange = (event) => {
     setComment(event.target.value);
+  };
+
+  const handleAntutuScoreChange = (event) => {
+    setSelectedAntutuScore(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -80,7 +85,16 @@ function Addphone() {
           </select>
         </div>
         <div className="form-row">
-          <p>RAM :</p>
+          <p>Score Antutu </p>
+          <input
+            type="number"
+            min="0"
+            value={antutuScore}
+            onChange={handleAntutuScoreChange}
+          />
+        </div>
+        <div className="form-row">
+          <p>RAM </p>
           <select value={selectedRAM} onChange={handleRAMChange}>
             <option value="">-- Sélectionnez --</option>
             <option value="2 Go">2 Go</option>
