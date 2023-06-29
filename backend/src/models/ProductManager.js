@@ -1,8 +1,10 @@
 const AbstractManager = require("./AbstractManager");
+const ModelManager = require("./ModelManager");
 
 class ProductManager extends AbstractManager {
   constructor() {
     super({ table: "product" });
+    this.model = new ModelManager();
   }
 
   insert(product) {
@@ -19,10 +21,21 @@ class ProductManager extends AbstractManager {
 
   update(product) {
     return this.database.query(
-      `update ${this.table} set title = ? where id = ?`,
-      [product.title, product.id]
+      `update ${this.table} set state = ?, antutu_value = ?, has_accessories = ?,id_model=? where id = ?`,
+      [
+        product.state,
+        product.antutu_value,
+        product.has_accessories,
+        product.id_model,
+        product.id,
+      ]
+    );
+  }
+
+  findAll() {
+    return this.database.query(
+      `select * from ${this.table} JOIN ${this.model.table} ON ${this.table}.id_model = ${this.model.table}.id`
     );
   }
 }
-
 module.exports = ProductManager;
