@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../App.css";
 
 function Addphone() {
+  const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState("");
+  const [selectedMarque, setSelectedMarque] = useState("");
   const [selectedRAM, setSelectedRAM] = useState("");
   const [selectedStorage, setSelectedStorage] = useState("");
   const [selectedNetwork, setSelectedNetwork] = useState("");
   const [hasCharger, setHasCharger] = useState(false);
   const [comment, setComment] = useState("");
   const [antutuScore, setSelectedAntutuScore] = useState("");
-
+  useEffect(() => {
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"}/models`
+    )
+      .then((response) => response.json())
+      .then((data) => setModels(data));
+  }, []);
+  const handleMarqueChange = (event) => {
+    setSelectedMarque(event.target.value);
+  };
   const handleModelChange = (event) => {
     setSelectedModel(event.target.value);
   };
@@ -47,6 +58,7 @@ function Addphone() {
     setSelectedNetwork("");
     setHasCharger(false);
     setComment("");
+    setSelectedMarque("");
   };
 
   return (
@@ -57,25 +69,22 @@ function Addphone() {
       <form onSubmit={handleSubmit} className="form-list">
         <div className="form-row">
           <p>Marque : </p>
-          <select value={selectedModel} onChange={handleModelChange}>
+          <select value={selectedMarque} onChange={handleMarqueChange}>
             <option value="">-- Sélectionnez : --</option>
-            <option value="Modèle 1">Iphone</option>
-            <option value="Modèle 2">Samsung</option>
-            <option value="Modèle 3">Huawei</option>
-            <option value="Modèle 3">Sony</option>
+            {models.map((model) => (
+              <option value={model.marque}>{model.marque}</option>
+            ))}
           </select>
         </div>
         <div className="form-row">
           <p>Modèle : </p>
           <select value={selectedModel} onChange={handleModelChange}>
             <option value="">-- Sélectionnez : --</option>
-            <option value="Modèle 1">IphoneSE</option>
-            <option value="Modèle 2">Iphone11</option>
-            <option value="Modèle 3">Iphone XR</option>
-            <option value="Modèle 3">Iphone X</option>
-            <option value="Modèle 3">Galaxy S10</option>
-            <option value="Modèle 3">Galaxy Note 10</option>
-            <option value="Modèle 3">Galaxy Note 10</option>
+            {models
+              .filter((model) => model.marque === selectedMarque)
+              .map((model) => (
+                <option value={model.name}>{model.name}</option>
+              ))}
           </select>
         </div>
         <div className="form-row">
@@ -91,22 +100,18 @@ function Addphone() {
           <p>RAM </p>
           <select value={selectedRAM} onChange={handleRAMChange}>
             <option value="">-- Sélectionnez --</option>
-            <option value="2 Go">2 Go</option>
-            <option value="4 Go">4 Go</option>
-            <option value="8 Go">8 Go</option>
-            <option value="8 Go">16 Go</option>
-            <option value="8 Go">32 Go</option>
+            {models.map((model) => (
+              <option value={model.ram}>{model.ram}</option>
+            ))}
           </select>
         </div>
         <div className="form-row">
           <p>Stockage :</p>
           <select value={selectedStorage} onChange={handleStorageChange}>
             <option value="">-- Sélectionnez --</option>
-            <option value="256 Go">16 Go</option>
-            <option value="64 Go">64 Go</option>
-            <option value="128 Go">128 Go</option>
-            <option value="256 Go">256 Go</option>
-            <option value="256 Go">512 Go</option>
+            {models.map((model) => (
+              <option value={model.storage}>{model.storage}</option>
+            ))}
           </select>
         </div>
         <div className="form-row">
@@ -122,9 +127,8 @@ function Addphone() {
           <p>Accesoires :</p>
           <select value={hasCharger} onChange={handleChargerChange}>
             <option value="">-- Sélectionnez --</option>
-            <option value="4G">Cable</option>
-            <option value="5G">Charger</option>
-            <option value="5G">Ecouter</option>
+            <option>Cable+ chargeur</option>
+            <option>sans Accesoires</option>
           </select>
         </div>
         <div className="form-row">
