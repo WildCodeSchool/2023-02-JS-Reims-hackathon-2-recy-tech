@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-// import Addphone from "./components/Addphone";
 import Home from "./pages/Home";
 import ListProduct from "./pages/ListProduct";
 import AddProducts from "./pages/AddProducts";
