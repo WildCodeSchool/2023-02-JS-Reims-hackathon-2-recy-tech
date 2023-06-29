@@ -88,15 +88,6 @@ function Addphone() {
           />
         </div>
         <div className="form-row">
-          <p>Score Antutu </p>
-          <input
-            type="number"
-            min="0"
-            value={antutuScore}
-            onChange={handleAntutuScoreChange}
-          />
-        </div>
-        <div className="form-row">
           <p>RAM </p>
           <select value={selectedRAM} onChange={handleRAMChange}>
             <option value="">-- Sélectionnez --</option>
