@@ -5,29 +5,19 @@ function ListProduct() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchedProducts = [
-      {
-        id: 1,
-        name: "Téléphone 1",
-        model: "Modèle 1",
-        category: "Catégorie A",
-      },
-      {
-        id: 2,
-        name: "Téléphone 2",
-        model: "Modèle 2",
-        category: "Catégorie B",
-      },
-      {
-        id: 3,
-        name: "Téléphone 3",
-        model: "Modèle 3",
-        category: "Catégorie C",
-      },
-    ];
-
-    setProducts(fetchedProducts);
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"}/products`
+    )
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
   }, []);
+  /**  function duplicateproducts() {
+    const dupP=[];
+    for (let i = 0; i < 100; i += 1) {
+      dupP.push(...products);
+    }
+    return dupP;
+  } */
 
   return (
     <div>
@@ -36,7 +26,7 @@ function ListProduct() {
         <thead>
           <tr>
             <th>Nom</th>
-            <th>Modèle</th>
+            <th>Prix</th>
             <th>Catégorie</th>
           </tr>
         </thead>
@@ -44,7 +34,7 @@ function ListProduct() {
           {products.map((product) => (
             <tr key={product.id}>
               <td>{product.name}</td>
-              <td>{product.model}</td>
+              <td>{product.price}</td>
               <td>{product.category}</td>
             </tr>
           ))}
