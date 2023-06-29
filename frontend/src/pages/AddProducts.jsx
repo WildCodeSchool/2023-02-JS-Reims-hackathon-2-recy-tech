@@ -1,7 +1,11 @@
+import React from "react";
+
+import Addphone from "../components/Addphone";
+
 function AddProducts() {
   return (
     <div>
-      <h1>Add Produit</h1>
+      <Addphone />
     </div>
   );
 }
