@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-function DescPhone(phoneId) {
+function DescPhone() {
   const [product, setProduct] = useState([]);
+  const { id } = useParams();
+
   useEffect(() => {
     fetch(
       `${
         import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
-      }/products/${phoneId}`
+      }/products/${id}`
     )
       .then((response) => response.json())
       .then((data) => setProduct(data));
