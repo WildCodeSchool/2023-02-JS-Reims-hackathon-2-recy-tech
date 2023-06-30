@@ -18,6 +18,12 @@ class ModelManager extends AbstractManager {
       [model.name, model.id]
     );
   }
+
+  findByName(name) {
+    return this.database.query(`select * from  ${this.table} where name = ?`, [
+      name,
+    ]);
+  }
 }
 
 module.exports = ModelManager;

@@ -6,6 +6,7 @@ import recyTech from "../assets/RecyTech_logo.png";
 import home from "../assets/home1.png";
 import add from "../assets/add1.svg";
 import liste from "../assets/liste.svg";
+
 import "../App.css";
 
 function Navbar() {

@@ -1,34 +1,35 @@
 import { useState } from "react";
-
-// Link for QRCODE : https://hackernoon.com/how-to-build-a-qr-code-generator-in-react
+import QRCode from "react-qr-code";
 
 function QrCode() {
-  const [url, setUrl] = useState("");
-
-  const downloadQRCode = (e) => {
-    e.preventDefault();
-    setUrl("");
-  };
-
-  const qrCodeEncoder = (e) => {
-    setUrl(e.target.value);
-  };
+  const [size, setSize] = useState(256);
+  const url = window.location.href;
+  const [value] = useState(url);
 
   return (
-    <div className="qrcode_container">
-      <div className="input_group">
-        <form onSubmit={downloadQRCode}>
-          <input
-            type="text"
-            value={url}
-            onChange={qrCodeEncoder}
-            placeholder="chemin"
-          />
-          <button type="submit" disabled={!url}>
-            Télécharger le QR Code
-          </button>
-        </form>
+    <div className="QrCode">
+      <div className="input-data">
+        <input
+          type="number"
+          onChange={(e) =>
+            setSize(parseInt(e.target.value === "" ? 0 : e.target.value, 10))
+          }
+          placeholder="Qr-code: 256"
+        />
+        <div className="underline" />
       </div>
+      {value && (
+        <QRCode
+          title=" QR code"
+          value={url}
+          bgColor="#FFFFFF"
+          fgColor="#000000"
+          size={size === "" ? 0 : size}
+        />
+      )}
+      <button type="button" onClick={() => window.print()} className="linkMenu">
+        Imprimer
+      </button>
     </div>
   );
 }
