@@ -8,13 +8,10 @@ function Home() {
     <div className="homeHero">
       <div className="hero">
         <div className="heroText">
-          <h1>Bienvenue sur Emmaus Connect</h1>
-          <p className="text-home">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et fugiat
-            repellendus eveniet tempora aspernatur exercitationem a iste sed
-            quaerat, sequi facilis repudiandae consectetur laboriosam nisi.
-            Neque similique tenetur ipsum optio.
-          </p>
+          <h1>Bienvenue sur Recy Tech</h1>
+          <h3 className="text-home">
+            Agir sur toutes les dimensions de l’exclusion numérique et sociale
+          </h3>
           <Link to="/ajouteproduit" className="button-home">
             Commencer
           </Link>

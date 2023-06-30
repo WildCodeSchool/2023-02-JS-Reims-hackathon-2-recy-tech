@@ -16,44 +16,64 @@ function DescPhone() {
   }, []);
 
   return (
-    <div>
-      <h1>Description du téléphone</h1>
-      <img src="cheminPhoto" alt="TéléphoneN1" />
-      <p>{}</p>
-
-      <h2>Caractéristiques :</h2>
-      <ul>
-        <li key={product.id}>
-          <strong>Nom</strong> {product.name}
-        </li>
-        <li key={2 * product.id}>
-          <strong>Marque</strong> {product.marque}
-        </li>
-        <li key={3 * product.id}>
-          <strong>Prix</strong> {product.price}
-        </li>
-        <li key={4 * product.id}>
-          <strong>Etat</strong> {product.state}
-        </li>
-        <li key={5 * product.id}>
-          <strong>Stockage</strong> {product.name}
-        </li>
-        <li key={6 * product.id}>
-          <strong>RAM</strong> {product.marque}
-        </li>
-        <li key={7 * product.id}>
-          <strong>CABLE et CHARGEUR</strong> {product.price}
-        </li>
-        <li key={8 * product.id}>
-          <strong>Réseau</strong> {product.state}
-        </li>
-        <li key={9 * product.id}>
-          <strong>Image</strong> <img src={product.img} alt={product.name} />
-        </li>
-        <li key={10 * product.id}>
-          <strong>Commentaire</strong> {product.commentary}
-        </li>
-      </ul>
+    <div className="desc">
+      <div className="titleProduct">
+        <h1>Caractéristiques</h1>
+      </div>
+      <section className="listDesc">
+        <ul className="listDescription">
+          <div className="list1">
+            <li key={product.id}>
+              <strong>Nom :</strong> {product.name}
+            </li>
+          </div>
+          <div className="list1">
+            <li key={2 * product.id}>
+              <strong>Marque :</strong> {product.marque}
+            </li>
+          </div>
+          <div className="list1">
+            <li key={3 * product.id}>
+              <strong>Prix :</strong> {product.price}
+            </li>
+          </div>
+          <div className="list1">
+            <li key={4 * product.id}>
+              <strong>Etat :</strong> {product.state}
+            </li>
+          </div>
+          <div className="list1">
+            <li key={5 * product.id}>
+              <strong>Stockage :</strong> {product.name}
+            </li>
+          </div>
+          <div className="list1">
+            <li key={6 * product.id}>
+              <strong>RAM :</strong> {product.marque}
+            </li>
+          </div>
+          <div className="list1">
+            <li key={7 * product.id}>
+              <strong>CABLE et CHARGEUR :</strong> {product.price}
+            </li>
+          </div>
+          <div className="list1">
+            <li key={8 * product.id}>
+              <strong>Réseau :</strong> {product.state}
+            </li>
+          </div>
+          <div className="list1">
+            <li key={10 * product.id}>
+              <strong>Commentaire :</strong> {product.commentary}
+            </li>
+          </div>
+        </ul>
+        <div className="imageProduct">
+          <div key={9 * product.id}>
+            <img src={product.img} alt={product.name} />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
