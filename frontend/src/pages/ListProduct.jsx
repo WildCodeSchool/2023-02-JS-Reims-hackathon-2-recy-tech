@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import "../App.css";
 
 function ListProduct() {
@@ -28,6 +30,8 @@ function ListProduct() {
             <th>Nom</th>
             <th>Prix</th>
             <th>Catégorie</th>
+            <th>Commentaire</th>
+            <th>Fiche Produit</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +40,12 @@ function ListProduct() {
               <td>{product.name}</td>
               <td>{product.price}</td>
               <td>{product.category}</td>
+              <td>{product.commentary}</td>
+              <td>
+                <Link key={`${product.id}`} to={`/DescPhone/${product.id}`}>
+                  Voir fiche produit
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

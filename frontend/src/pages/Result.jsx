@@ -4,7 +4,7 @@ function Result() {
   return (
     <div>
       Result
-      <h1>Voici Les resultat</h1>
+      <h1>Voici Les resultats</h1>
       <img src={logo} alt="" />
     </div>
   );
