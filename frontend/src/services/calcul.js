@@ -108,5 +108,4 @@ function calcul(ram, storage, antutu, state) {
   return [price, category];
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export { calcul };
+export default calcul;
