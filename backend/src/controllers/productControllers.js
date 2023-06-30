@@ -81,8 +81,30 @@ const destroy = (req, res) => {
       res.sendStatus(500);
     });
 };
-
 const addProductAndModel = (req, res) => {
+  // Vérifier si le modèle existe
+  models.model.findByName(req.body.model_name).then(([rows]) => {
+    if (rows[0] == null) {
+      res.sendStatus(404);
+    } else {
+      const modelId = rows[0].id;
+      const productData = {
+        state: req.body.state,
+        antutu_value: req.body.antutu_value,
+        has_accessories: req.body.has_accessories,
+        price: req.body.price,
+        category: req.body.category,
+        commentary: req.body.commentary,
+        id_model: modelId,
+      };
+      models.product.insert(productData).then(([result]) => {
+        res.location(`/products/${result.insertId}`).sendStatus(201);
+      });
+    }
+  });
+};
+
+/** const addProductAndModel = (req, res) => {
   // vérifier si le model exist
   models.model.findByName(req.body.model_name).then(([rows]) => {
     if (rows[0] == null) {
@@ -94,7 +116,7 @@ const addProductAndModel = (req, res) => {
       });
     }
   });
-};
+}; */
 
 module.exports = {
   browse,

@@ -1,22 +1,24 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import calcul from "../services/calcul";
 import "../App.css";
 
 function Addphone() {
+  const navigate = useNavigate();
   const [selectedMarque, setSelectedMarque] = useState("");
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedRAM, setSelectedRAM] = useState("");
   const [selectedStorage, setSelectedStorage] = useState("");
   const [selectedNetwork, setSelectedNetwork] = useState("");
-  const [hasCharger, setHasCharger] = useState(false);
+  const [hasCharger, setHasCharger] = useState("");
   const [comment, setComment] = useState("");
   const [antutuScore, setSelectedAntutuScore] = useState("");
   const [selectedEtat, setSelectedEtat] = useState("");
 
   useEffect(() => {
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"}/models`
+      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5001"}/models`
     )
       .then((response) => response.json())
       .then((data) => setModels(data));
@@ -59,13 +61,51 @@ function Addphone() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSelectedModel("");
-    setSelectedRAM("");
-    setSelectedStorage("");
-    setSelectedNetwork("");
-    setHasCharger(false);
-    setComment("");
-    setSelectedMarque("");
+    const result = calcul(
+      selectedRAM,
+      selectedStorage,
+      parseInt(antutuScore, 10),
+      selectedEtat
+    );
+    const productData = {
+      model_name: selectedModel,
+      has_accessories: hasCharger === "Cable+ Chargeur",
+      commentary: comment,
+      antutu_value: parseInt(antutuScore, 10),
+      state: selectedEtat,
+      price: parseInt(result[0], 10),
+      category: result[1],
+    };
+    console.error("productData:", productData); // Vérification des données du produit
+
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5001"}/products`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(productData),
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          setSelectedModel("");
+          setSelectedRAM("");
+          setSelectedStorage("");
+          setSelectedNetwork("");
+          setHasCharger(false);
+          setComment("");
+          setSelectedMarque("");
+          navigate("/result");
+        } else {
+          throw new Error("Erreur lors de la requête HTTP");
+        }
+      })
+      .catch((error) => {
+        // Gérer l'erreur ici, par exemple :
+        console.error("Erreur lors de la requête HTTP :", error.message);
+      });
   };
 
   return (
@@ -79,7 +119,9 @@ function Addphone() {
           <select value={selectedMarque} onChange={handleMarqueChange}>
             <option value="">-- Sélectionnez : --</option>
             {models.map((model) => (
-              <option value={model.marque}>{model.marque}</option>
+              <option key={model.id} value={model.marque}>
+                {model.marque}
+              </option>
             ))}
           </select>
         </div>
@@ -90,7 +132,9 @@ function Addphone() {
             {models
               .filter((model) => model.marque === selectedMarque)
               .map((model) => (
-                <option value={model.name}>{model.name}</option>
+                <option key={2 * model.id} value={model.name}>
+                  {model.name}
+                </option>
               ))}
           </select>
         </div>
@@ -109,7 +153,9 @@ function Addphone() {
           <select value={selectedRAM} onChange={handleRAMChange}>
             <option value="">-- Sélectionnez --</option>
             {models.map((model) => (
-              <option value={model.ram}>{model.ram}</option>
+              <option key={3 * model.id} value={model.ram}>
+                {model.ram}
+              </option>
             ))}
           </select>
         </div>
@@ -118,7 +164,9 @@ function Addphone() {
           <select value={selectedStorage} onChange={handleStorageChange}>
             <option value="">-- Sélectionnez --</option>
             {models.map((model) => (
-              <option value={model.storage}>{model.storage}</option>
+              <option key={4 * model.id} value={model.storage}>
+                {model.storage}
+              </option>
             ))}
           </select>
         </div>
@@ -144,21 +192,24 @@ function Addphone() {
           <select value={selectedEtat} onChange={handleEtatChange}>
             <option value="">-- Sélectionnez --</option>
             <option>DEEE</option>
-            <option>Reparable</option>
-            <option>Bloque</option>
-            <option>Reconditionable</option>
-            <option>Reconditionné</option>
+            <option>REPARABLE</option>
+            <option>BLOQUE</option>
+            <option>RECONDITIONABLE</option>
+            <option>RECONDITIONNE</option>
           </select>
         </div>
         <div className="form-row">
           <p>Commentaire </p>
           <textarea value={comment} onChange={handleCommentChange} />
         </div>
-        <div className="btn-form">
+        {/* <div className="btn-form">
           <Link to="resultat" className="btn1">
             Validation
           </Link>
-        </div>
+        </div> */}
+        <button className="btn-form btn1" type="submit">
+          Valider
+        </button>
       </form>
     </section>
   );
