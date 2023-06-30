@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import QrCode from "../components/QrCode";
 
 function DescPhone() {
   const [product, setProduct] = useState([]);
@@ -54,7 +55,8 @@ function DescPhone() {
           </div>
           <div className="list1">
             <li key={7 * product.id}>
-              <strong>CABLE et CHARGEUR :</strong> {product.price}
+              <strong>CABLE et CHARGEUR :</strong>{" "}
+              {product.has_accessoiries ? "Oui" : "Non"}
             </li>
           </div>
           <div className="list1">
@@ -71,6 +73,9 @@ function DescPhone() {
         <div className="imageProduct">
           <div key={9 * product.id}>
             <img src={product.img} alt={product.name} />
+          </div>
+          <div className="list2">
+            <QrCode url={`http://localhost:3000"}/DescPhone/${product.id}`} />
           </div>
         </div>
       </section>

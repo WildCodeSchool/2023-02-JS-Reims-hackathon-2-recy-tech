@@ -1,9 +1,9 @@
 import { useState } from "react";
 import QRCode from "react-qr-code";
 
-function QrCode() {
-  const [size, setSize] = useState(256);
-  const url = window.location.href;
+function QrCode(url) {
+  const [size, setSize] = useState(128);
+
   const [value] = useState(url);
 
   return (

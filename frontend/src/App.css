@@ -361,3 +361,8 @@ input[type="checkbox"] {
   position: absolute;
   left: 0;
 }
+.list2 {
+  display: flex;
+  position: absolute;
+  left: 250%;
+}

@@ -1,5 +1,5 @@
 const AbstractManager = require("./AbstractManager");
-const ModelManager = require("./modelManager");
+const ModelManager = require("./ModelManager");
 
 class ProductManager extends AbstractManager {
   constructor() {
