@@ -97,7 +97,7 @@ function Addphone() {
           setHasCharger(false);
           setComment("");
           setSelectedMarque("");
-          navigate("/result");
+          navigate("/listeproduit");
         } else {
           throw new Error("Erreur lors de la requête HTTP");
         }
