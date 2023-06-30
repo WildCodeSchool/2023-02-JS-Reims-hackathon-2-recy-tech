@@ -1,30 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function DescPhone() {
-  const description =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare, eros in lobortis covallis, mauris risuss tincidunt libero, in tempus nulla neque eu quam. Sed non mattis justo.";
-  const caracteristiques = [
-    { nom: "Ecran", valeur: "6 pouces" },
-    { nom: "Ram", valeur: "6go" },
-    { nom: "Mémoire", valeur: "64go" },
-    { nom: "Réseau", valeur: "4G" },
-    { nom: "Chargeur", valeur: "Oui" },
-  ];
+function DescPhone(phoneId) {
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    fetch(
+      `${
+        import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
+      }/products/${phoneId}`
+    )
+      .then((response) => response.json())
+      .then((data) => setProduct(data));
+  }, []);
 
   return (
     <div>
       <h1>Description du téléphone</h1>
       <img src="cheminPhoto" alt="TéléphoneN1" />
-      <p>{description}</p>
+      <p>{}</p>
 
       <h2>Caractéristiques :</h2>
       <ul>
-        {caracteristiques.map((caracteristique, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <li key={index}>
-            <strong>{caracteristique.nom}:</strong> {caracteristique.valeur}
-          </li>
-        ))}
+        <li key={product.id}>
+          <strong>Nom</strong> {product.name}
+        </li>
+        <li key={2 * product.id}>
+          <strong>Marque</strong> {product.marque}
+        </li>
+        <li key={3 * product.id}>
+          <strong>Prix</strong> {product.price}
+        </li>
+        <li key={4 * product.id}>
+          <strong>Etat</strong> {product.state}
+        </li>
+        <li key={5 * product.id}>
+          <strong>Stockage</strong> {product.name}
+        </li>
+        <li key={6 * product.id}>
+          <strong>RAM</strong> {product.marque}
+        </li>
+        <li key={7 * product.id}>
+          <strong>CABLE et CHARGEUR</strong> {product.price}
+        </li>
+        <li key={8 * product.id}>
+          <strong>Réseau</strong> {product.state}
+        </li>
+        <li key={9 * product.id}>
+          <strong>Image</strong> <img src={product.img} alt={product.name} />
+        </li>
+        <li key={10 * product.id}>
+          <strong>Commentaire</strong> {product.commentary}
+        </li>
       </ul>
     </div>
   );
