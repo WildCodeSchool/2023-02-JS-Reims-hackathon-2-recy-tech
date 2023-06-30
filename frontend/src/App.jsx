@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import ListProduct from "./pages/ListProduct";
 import AddProducts from "./pages/AddProducts";
-import Result from "./pages/Result";
 import DescPhone from "./pages/DescPhone";
 import "./App.css";
 
@@ -18,7 +17,6 @@ function App() {
         <Route path="/ajouteproduit" element={<AddProducts />} />
         <Route path="/listeproduit" element={<ListProduct />} />
         <Route path="/DescPhone/:id" element={<DescPhone />} />
-        <Route path="/ajouteproduit/resultat" element={<Result />} />
       </Routes>
       <Footer />
     </div>
